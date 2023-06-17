@@ -20,7 +20,7 @@ using System.Reflection;
 /// public or tagged with the [SerializeField] attribute) in
 /// the target MonoBehaviour.
 /// </summary>
-[System.AttributeUsage(System.AttributeTargets.Field)]
+[AttributeUsage(System.AttributeTargets.Field)]
 public class InspectorButtonAttribute : PropertyAttribute
 {
     public static float kDefaultButtonWidth = 80;

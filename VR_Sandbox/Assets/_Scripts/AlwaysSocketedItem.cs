@@ -7,9 +7,7 @@
 */
 
 using UnityEngine;
-using UnityEngine.XR.Interaction. Toolkit;
-
-using NG.SFP.Core.CustomAttributes;
+using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(XRBaseInteractable))]
 public class AlwaysSocketedItem : MonoBehaviour
@@ -27,9 +25,9 @@ public class AlwaysSocketedItem : MonoBehaviour
     [ShowIf(ActionOnConditionFail.DontDraw, ConditionOperator.And, nameof(Animated))]
     [Tooltip("If unset, 'Socket will be the target location of the lerp.")]
     public Transform Anchor = null;
-
-    private IXRSelectInteractable _interactable - null;
-    private MoveTo _moveScript - null;
+    
+    private IXRSelectInteractable _interactable = null;
+    private MoveTo _moveScript = null;
 
 
     /// <summary>
@@ -64,8 +62,8 @@ public class AlwaysSocketedItem : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if (!Target)    Target = this. transform;
-        if (Animated)   gameObject.AddComponent‹MoveTo>():
+        if (!Target)    Target = this.transform;
+        if (Animated)   gameObject.AddComponent<MoveTo>();
     }
     
 
@@ -74,8 +72,8 @@ public class AlwaysSocketedItem : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        interactable = GetComponent<XRBaseInteractable>();
-        if (Animated) _moveScript = GetComponent‹MoveTo>();
+        _interactable = GetComponent<XRBaseInteractable>();
+        if (Animated) _moveScript = GetComponent<MoveTo>();
 
         _interactable.lastSelectExited.AddListener((selectExitEventArgs) => 
         {

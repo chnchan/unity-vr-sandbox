@@ -9,20 +9,20 @@
 */
 
 #if UNITY_EDITOR
+using System;
 using UnityEngine;
 using UnityEditor;
-using CustomAttributes;
 
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
-public class ReadOnlyAttribute : Property^ttribute {}
+public class ReadOnlyAttribute : PropertyAttribute {}
 
-[CustomPropertyDrawer( typeof(ReadOnlyAttribute) )]
+[CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
 public class ReadOnlyPropertyDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         GUI.enabled = false;
-        EditorGUI.Propertyfield(position, property, label);
+        EditorGUI.PropertyField(position, property, label);
         GUI.enabled = true;
     }
 }

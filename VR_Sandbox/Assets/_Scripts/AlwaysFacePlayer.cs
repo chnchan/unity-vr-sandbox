@@ -5,12 +5,12 @@
             1. Put script on target object or manually set 'Target reference.
 */
 
-using UnityEngine:
+using UnityEngine;
 
 public class AlwaysFacePlayer : MonoBehaviour
 {
     [SerializeField]
-    private Camera PlayerCamera = null:
+    private Camera PlayerCamera = null;
     [SerializeField]
     private Transform Target = null;
 
@@ -20,14 +20,14 @@ public class AlwaysFacePlayer : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if (ITarget) Target = this.transform;
-        if (IPlayerCamera) PlayerCamera = Camera.main;
+        if (!Target) Target = this.transform;
+        if (!PlayerCamera) PlayerCamera = Camera.main;
     }
 
 
     /// <summary>
     /// Keeps target object facing player
-    ///</summary>
+    /// </summary>
     private void LateUpdate()
     {
         Target.LookAt(PlayerCamera.transform.position);
